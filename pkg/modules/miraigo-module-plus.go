@@ -193,7 +193,7 @@ func runRule(rule *entity.Rule, context map[string]string) (string, error) {
 		setKey := context["$1"]
 		set := getSet(setKey)
 		if set == nil {
-			return "", nil
+			return "", errors.New("卡池不存在")
 		}
 		countStr, ok := context["$2"]
 		var count int
