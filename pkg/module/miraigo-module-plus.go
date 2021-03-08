@@ -10,6 +10,7 @@ import (
 	"github.com/Logiase/MiraiGo-Template/utils"
 	"github.com/Mrs4s/MiraiGo/client"
 	"github.com/Mrs4s/MiraiGo/message"
+	"github.com/prometheus/common/log"
 )
 
 func init() {
@@ -38,11 +39,16 @@ func (a *ar) PostInit() {
 
 func (a *ar) Serve(b *bot.Bot) {
 	b.OnGroupMessage(func(c *client.QQClient, msg *message.GroupMessage) {
-		//获取群号,获取回复内容,回复
+		//获取回复内容
 		messageText := msg.ToString()
+		//判断是否为命令
 		if strings.HasPrefix(messageText, ".") {
+			//切割内容
 			messageArray := strings.Split(messageText, " ")
+			//第一个为命令
 			command := messageArray[0]
+			params := messageArray[1:]
+			log.Debug("接收到命令[%v]参数为[%v]", command, params)
 			var out string
 			if command == ".r" {
 				out = fmt.Sprint(rand.Intn(100))
