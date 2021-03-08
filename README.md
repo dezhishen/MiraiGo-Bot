@@ -34,3 +34,6 @@
 ## 依赖项目
 * https://github.com/Mrs4s/MiraiGo
 * https://github.com/Logiase/MiraiGo-Template
+* https://github.com/golang-migrate/migrate/v4
+* https://github.com/mattn/go-sqlite3
+...更多见[`go.mod`](go.mod)
