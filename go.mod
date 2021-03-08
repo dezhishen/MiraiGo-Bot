@@ -10,4 +10,5 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.6
 	github.com/prometheus/common v0.4.0
 	golang.org/x/sys v0.0.0-20210305230114-8fe3ee5dd75b // indirect
+	gopkg.in/fatih/set.v0 v0.2.1
 )

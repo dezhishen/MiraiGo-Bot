@@ -7,6 +7,6 @@ type Rule struct {
 	Type         string
 	RespTemplate string
 	Command      string
-	Min          int64
-	Max          int64
+	Min          int
+	Max          int
 }
