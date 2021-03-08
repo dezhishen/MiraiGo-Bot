@@ -2,8 +2,11 @@ package migrations
 
 import (
 	"github.com/golang-migrate/migrate/v4"
+	"github.com/prometheus/common/log"
 
 	// file
+	_ "github.com/golang-migrate/migrate/database/sqlite3"
+	// sqlite3
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 
 	// 数据库
@@ -17,6 +20,7 @@ func Sync(file string) {
 		file,
 		"sqlite3://mirai/data.sqlite?query")
 	if err != nil {
+		log.Error(err)
 		panic(err)
 	}
 	m.Steps(2)

@@ -4,8 +4,6 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/dezhiShen/MiraiGo-Bot/pkg/migrations"
-
 	"github.com/Logiase/MiraiGo-Template/bot"
 	"github.com/Logiase/MiraiGo-Template/config"
 	"github.com/Logiase/MiraiGo-Template/utils"
@@ -14,9 +12,9 @@ import (
 )
 
 func init() {
+	// migrations.Sync("file://./migrations")
 	utils.WriteLogToFS()
 	config.Init()
-	migrations.Sync("./migrations")
 }
 func main() {
 	// 快速初始化
