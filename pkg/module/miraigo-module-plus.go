@@ -20,7 +20,7 @@ func init() {
 }
 
 var instance = &ar{}
-var logger = utils.GetModuleLogger("logiase.autoreply")
+var logger = utils.GetModuleLogger("dezhiShen.reply")
 var tem map[string]string
 
 type ar struct {
