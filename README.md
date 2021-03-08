@@ -8,9 +8,9 @@
   
   是否实现|类型|编码|描述
   -|-|-|-
-  [ ]|文本|text|返回固定文本
-  [ ]|随机数|randomMath|返回`[min,max]`中的整数值
-  [ ]|随机项|randomItem|返回`[a,b,c,d,e]`中任意个数
+  N|文本|text|返回固定文本
+  N|随机数|randomMath|返回`[min,max]`中的整数值
+  N|随机项|randomItem|返回`[a,b,c,d,e]`中任意个数
   ...|
 
 * [ ] 支持定向回复
