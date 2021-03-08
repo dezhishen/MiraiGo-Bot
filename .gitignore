@@ -16,3 +16,4 @@ vendor/
 .vscode
 device.json
 application.yaml
+cmd/__debug_bin
