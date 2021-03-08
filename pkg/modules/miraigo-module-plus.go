@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"math/rand"
@@ -80,7 +81,10 @@ func replyToGroupMessage(msg *message.GroupMessage) string {
 		command := messageArray[0]
 		msgContext := getGroupMessageContext(msg)
 		rule := getRule("group", msg.GroupCode, command)
-		answer := runRule(rule, msgContext)
+		answer, err := runRule(rule, msgContext)
+		if err != nil {
+			return err.Error()
+		}
 		msgContext["$answer"] = answer
 		log.Printf("%v,%v", msgContext, rule)
 		out := replaceTemplate(rule.RespTemplate, msgContext)
@@ -102,7 +106,10 @@ func replyToPrivateMessage(msg *message.PrivateMessage) string {
 		command := messageArray[0]
 		msgContext := getPrivateMessageContext(msg)
 		rule := getRule("group", msg.Sender.Uin, command)
-		answer := runRule(rule, msgContext)
+		answer, err := runRule(rule, msgContext)
+		if err != nil {
+			return err.Error()
+		}
 		msgContext["$answer"] = answer
 		log.Printf("%v,%v", msgContext, rule)
 		out := replaceTemplate(rule.RespTemplate, msgContext)
@@ -151,14 +158,14 @@ func getRule(messageType string, id int64, command string) *entity.Rule {
 			RespTemplate: "[$nickName]掷出了:$answer",
 		}
 	}
-	if command == ".rc" {
+	if command == ".draw" {
 		return &entity.Rule{
-			Command:      ".rc",
-			ID:           ".rc",
+			Command:      ".draw",
+			ID:           ".draw",
 			Max:          100,
 			Min:          0,
 			Type:         "randomItem",
-			RespTemplate: "[$nickName]掷出了:$answer",
+			RespTemplate: "[$nickName]抽出[$answer]",
 		}
 	}
 	return nil
@@ -176,17 +183,17 @@ func replaceTemplate(temp string, context map[string]string) string {
 	return temp
 }
 
-func runRule(rule *entity.Rule, context map[string]string) string {
+func runRule(rule *entity.Rule, context map[string]string) (string, error) {
 	if rule.Type == "randomMath" {
 		rand.Seed(time.Now().UnixNano())
 		v := rand.Intn(rule.Max-rule.Min) + rule.Min
-		return fmt.Sprint(v)
+		return fmt.Sprint(v), nil
 	}
 	if rule.Type == "randomItem" {
 		setKey := context["$1"]
 		set := getSet(setKey)
 		if set == nil {
-			return ""
+			return "", nil
 		}
 		countStr, ok := context["$2"]
 		var count int
@@ -196,19 +203,22 @@ func runRule(rule *entity.Rule, context map[string]string) string {
 			var err error
 			count, err = strconv.Atoi(countStr)
 			if err != nil {
-				return "参数不合法"
+				return "", errors.New("参数类型错误,必须是正整数")
 			}
+		}
+		if count > set.Size() {
+			return "", errors.New("卡池中没有这么多的卡")
 		}
 		out := ""
 		for i := 0; i < count; i++ {
 			v := set.Pop()
 			out += (fmt.Sprint(v) + ",")
 		}
-		return out[:len(out)-1]
+		return out[:len(out)-1], nil
 
 	}
 
-	return ""
+	return "", nil
 }
 
 // getSet 获取选项
@@ -219,6 +229,30 @@ func getSet(key string) set.Interface {
 		result.Add(",")
 		result.Add("。")
 		result.Add("...")
+		return result
+	}
+	if key == "明日方舟" {
+		result := set.New(set.ThreadSafe)
+		result.Add("推进之王")
+		result.Add("星熊")
+		result.Add("伊芙利特")
+		result.Add("德克萨斯")
+		result.Add("芙兰卡")
+		result.Add("普罗旺斯")
+		result.Add("雷蛇")
+		result.Add("深海色")
+		result.Add("能天使")
+		result.Add("闪灵")
+		result.Add("幽灵鲨")
+		result.Add("蓝毒")
+		result.Add("临光")
+		result.Add("赫默")
+		result.Add("阿米娅")
+		result.Add("红")
+		result.Add("凛冬")
+		result.Add("流星")
+		result.Add("蛇屠箱")
+		result.Add("白面鸮")
 		return result
 	}
 	return nil
