@@ -1,6 +1,9 @@
 package module
 
 import (
+	"fmt"
+	"math/rand"
+	"strings"
 	"sync"
 
 	"github.com/Logiase/MiraiGo-Template/bot"
@@ -36,12 +39,19 @@ func (a *ar) PostInit() {
 func (a *ar) Serve(b *bot.Bot) {
 	b.OnGroupMessage(func(c *client.QQClient, msg *message.GroupMessage) {
 		//获取群号,获取回复内容,回复
-		out := autoreply(msg.ToString())
-		if out == "" {
+		messageText := msg.ToString()
+		if strings.HasPrefix(messageText, ".") {
+			messageArray := strings.Split(messageText, " ")
+			command := messageArray[0]
+			var out string
+			if command == ".r" {
+				out = fmt.Sprint(rand.Intn(100))
+			}
+			m := message.NewSendingMessage().Append(message.NewText(out))
+			c.SendGroupMessage(msg.GroupCode, m)
+		} else {
 			return
 		}
-		m := message.NewSendingMessage().Append(message.NewText(out))
-		c.SendGroupMessage(msg.GroupCode, m)
 	})
 
 	b.OnPrivateMessage(func(c *client.QQClient, msg *message.PrivateMessage) {
