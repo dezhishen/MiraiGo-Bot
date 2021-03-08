@@ -49,7 +49,7 @@ func (a *ar) Serve(b *bot.Bot) {
 			return
 		}
 		m := message.NewSendingMessage().Append(message.NewText(out))
-		c.SendGroupMessage(msg.GroupCode, m)
+		go c.SendGroupMessage(msg.GroupCode, m)
 	})
 
 	b.OnPrivateMessage(func(c *client.QQClient, msg *message.PrivateMessage) {
@@ -58,7 +58,7 @@ func (a *ar) Serve(b *bot.Bot) {
 			return
 		}
 		m := message.NewSendingMessage().Append(message.NewText(out))
-		c.SendPrivateMessage(msg.Sender.Uin, m)
+		go c.SendPrivateMessage(msg.Sender.Uin, m)
 	})
 }
 
