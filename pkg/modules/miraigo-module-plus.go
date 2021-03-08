@@ -106,6 +106,9 @@ func replyToPrivateMessage(msg *message.PrivateMessage) string {
 		command := messageArray[0]
 		msgContext := getPrivateMessageContext(msg)
 		rule := getRule("group", msg.Sender.Uin, command)
+		if rule == nil {
+			return ""
+		}
 		answer, err := runRule(rule, msgContext)
 		if err != nil {
 			return err.Error()
@@ -184,6 +187,9 @@ func replaceTemplate(temp string, context map[string]string) string {
 }
 
 func runRule(rule *entity.Rule, context map[string]string) (string, error) {
+	if rule == nil {
+		return "", nil
+	}
 	if rule.Type == "randomMath" {
 		rand.Seed(time.Now().UnixNano())
 		v := rand.Intn(rule.Max-rule.Min) + rule.Min
