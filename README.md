@@ -18,4 +18,4 @@
 ### 运行流程
 ![](./assets/images/运行流程.jpg)
 ### 配置流程
-//todo
+![](./assets/images/配置流程.jpg)
