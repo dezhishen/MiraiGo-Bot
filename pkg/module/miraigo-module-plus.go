@@ -3,16 +3,10 @@ package module
 import (
 	"sync"
 
-	"github.com/Mrs4s/MiraiGo/client"
-	"github.com/Mrs4s/MiraiGo/message"
-	"google.golang.org/appengine/log"
-
-	"database/sql"
-	_ "github.com/mattn/go-sqlite3"
 	"github.com/Logiase/MiraiGo-Template/bot"
 	"github.com/Logiase/MiraiGo-Template/utils"
-	"github.com/golang-migrate/migrate/v4"g
-	log "github.com/sirupsen/logrus"
+	"github.com/Mrs4s/MiraiGo/client"
+	"github.com/Mrs4s/MiraiGo/message"
 )
 
 func init() {
@@ -34,24 +28,6 @@ func (a *ar) MiraiGoModule() bot.ModuleInfo {
 }
 
 func (a *ar) Init() {
-	db, err := sql.Open("sqlite", "/mirai/qq.db")
-	if err != nil {
-		log.Errorf("rotatelogs init err: %v", err)
-		panic(err)
-	}
-
-	driver, err := postgres.WithInstance(db, &postgres.Config{})
-	if err != nil {
-		log.Errorf("rotatelogs init err: %v", err)
-		panic(err)
-	}
-	m, err := migrate.NewWithDatabaseInstance(
-		"file:///migrations",
-		"sqlite", driver)
-	if err != nil {
-		log.Errorf("rotatelogs init err: %v", err)
-		panic(err)
-	}
 }
 
 func (a *ar) PostInit() {
