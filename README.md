@@ -30,3 +30,7 @@
 ![](./assets/images/运行流程.jpg)
 ### 配置流程
 ![](./assets/images/配置流程.jpg)
+
+## 依赖项目
+* https://github.com/Mrs4s/MiraiGo
+* https://github.com/Logiase/MiraiGo-Template
