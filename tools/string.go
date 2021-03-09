@@ -85,7 +85,7 @@ func foreachObj(pre string, v reflect.Value, res map[string]interface{}) {
 	case reflect.Interface:
 		foreachObj(combinePath(pre, ""), v.Elem(), res)
 	default: // float, complex, bool, chan, string,int,func, interface
-		res[pre] = v.Interface()
+		res[pre] = fmt.Sprintf("%v", v.Interface())
 	}
 }
 
