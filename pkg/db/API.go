@@ -24,8 +24,8 @@ func GetAPI(ID string) *entity.API {
 		return &entity.API{
 			ID:               ".weather",
 			Method:           entity.HTTPGet,
-			URI:              "https://api.openweathermap.org/data/2.5/weather?units=metric&lang=zh_cn&q=${1},chn&appid={API key}",
-			ResponseTemplate: "${name}今天${main.temp}摄氏度,风速是${wind.speed}",
+			URI:              "https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${1}&city=${2}&county=${3}",
+			ResponseTemplate: "${1}${2}${3}现在${data.observe.weather_short},温度是${data.observe.degree}摄氏度",
 		}
 	}
 	return nil

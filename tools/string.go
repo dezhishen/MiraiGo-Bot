@@ -90,9 +90,9 @@ func foreachObj(pre string, v reflect.Value, res map[string]interface{}) {
 }
 
 func getTplExpressions(str string) []string {
-	regStr := `\$\{.*?\}`
+	regStr := `\$\{\S*?\}`
 	re, _ := regexp.Compile(regStr)
-	all := re.FindAll([]byte(str), 2)
+	all := re.FindAll([]byte(str), 1024)
 	keyArrays := make([]string, 0)
 	for _, item := range all {
 		itemStr := string(item)

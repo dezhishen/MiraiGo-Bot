@@ -34,10 +34,10 @@ func CallAPI(api *entity.API, context map[string]interface{}) (string, error) {
 		return "", err
 	}
 	resp = string(robots)
-	return processAPIResp(resp, api)
+	return processAPIResp(resp, api, context)
 }
 
-func processAPIResp(resp string, api *entity.API) (string, error) {
+func processAPIResp(resp string, api *entity.API, context map[string]interface{}) (string, error) {
 	if resp == "" {
 		return "", nil
 	}
@@ -50,6 +50,9 @@ func processAPIResp(resp string, api *entity.API) (string, error) {
 		return "", err
 	}
 	template := api.ResponseTemplate
+	for k, v := range context {
+		mapResult[k] = v
+	}
 	template = tools.ParseTpl(template, mapResult)
 	return template, nil
 }
