@@ -7,6 +7,7 @@ import (
 
 	"github.com/Mrs4s/MiraiGo/message"
 	"github.com/dezhiShen/MiraiGo-Bot/pkg/db"
+	"github.com/dezhiShen/MiraiGo-Bot/pkg/entity"
 )
 
 //ReplyToGroupMessage 获取回复群消息
@@ -30,7 +31,8 @@ func ReplyToGroupMessage(msg *message.GroupMessage) string {
 		}
 		msgContext["$answer"] = answer
 		log.Printf("%v,%v", msgContext, rule)
-		out := replaceTemplate(rule.RespTemplate, msgContext)
+		resp := db.GetResp(rule.RespID)
+		out := replaceTemplate(resp, msgContext)
 		return out
 
 	}
@@ -57,7 +59,8 @@ func ReplyToPrivateMessage(msg *message.PrivateMessage) string {
 			return err.Error()
 		}
 		msgContext["$answer"] = answer
-		out := replaceTemplate(rule.RespTemplate, msgContext)
+		resp := db.GetResp(rule.RespID)
+		out := replaceTemplate(resp, msgContext)
 		return out
 
 	}
@@ -94,14 +97,15 @@ func GetPrivateMessageContext(msg *message.PrivateMessage) map[string]string {
 	return result
 }
 
-func replaceTemplate(temp string, context map[string]string) string {
-	if temp == "" {
+func replaceTemplate(resp *entity.Resp, context map[string]string) string {
+	if resp == nil {
 		return ""
 	}
+	template := resp.Template
 	for key, exp := range context {
 		//fmt.Println("exp",exp)
 		exp = strings.TrimSpace(exp)
-		temp = strings.Replace(temp, key, exp, -1)
+		template = strings.Replace(template, key, exp, -1)
 	}
-	return temp
+	return template
 }
