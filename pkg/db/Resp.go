@@ -22,7 +22,14 @@ func GetResp(ID string) *entity.Resp {
 		return &entity.Resp{
 			ID:       ".hitokoto",
 			Type:     "content",
-			Template: "To ${nickName}: ${answer}",
+			Template: "For ${nickName}: ${answer}",
+		}
+	}
+	if ID == ".weather" {
+		return &entity.Resp{
+			ID:       ".hitokoto",
+			Type:     "content",
+			Template: "${answer}",
 		}
 	}
 	return nil

@@ -1,15 +1,11 @@
 package engine
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
-
-	"io/ioutil"
-	"net/http"
 
 	"github.com/dezhiShen/MiraiGo-Bot/pkg/db"
 	"github.com/dezhiShen/MiraiGo-Bot/pkg/entity"
@@ -59,40 +55,8 @@ func RunRule(rule *entity.Rule, context map[string]interface{}) (string, error) 
 		if api == nil {
 			return "", nil
 		}
-		if api.Method == "get" {
-			if api.RequestTemplate == "" {
-				res, err := http.Get(api.URI)
-				if err != nil {
-					return "", err
-				}
-				robots, err := ioutil.ReadAll(res.Body)
-				res.Body.Close()
-				if err != nil {
-					return "", err
-				}
-				resp := string(robots)
-				return processApiResp(resp, api)
-			}
-		}
-
+		return CallAPI(api, context)
 	}
 
 	return "", nil
-}
-
-func processApiResp(resp string, api *entity.API) (string, error) {
-	if resp == "" {
-		return "", nil
-	}
-	if api.ResponseTemplate == "" {
-		return "", nil
-	}
-	var mapResult map[string]interface{}
-	err := json.Unmarshal([]byte(resp), &mapResult)
-	if err != nil {
-		return "", err
-	}
-	template := api.ResponseTemplate
-	template = tools.ParseTpl(template, mapResult)
-	return template, nil
 }

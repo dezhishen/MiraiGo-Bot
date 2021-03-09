@@ -35,5 +35,16 @@ func GetRule(messageType string, id int64, command string) *entity.Rule {
 			APIID:   ".hitokoto",
 		}
 	}
+	if command == ".weather" {
+		return &entity.Rule{
+			Command: ".weather",
+			ID:      ".weather",
+			Max:     100,
+			Min:     0,
+			Type:    "api",
+			RespID:  ".weather",
+			APIID:   ".weather",
+		}
+	}
 	return nil
 }

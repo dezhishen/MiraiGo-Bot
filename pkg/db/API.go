@@ -7,7 +7,7 @@ func GetAPI(ID string) *entity.API {
 	if ID == ".hitokoto" {
 		return &entity.API{
 			ID:               ".hitokoto",
-			Method:           "get",
+			Method:           entity.HTTPGet,
 			URI:              "https://v1.hitokoto.cn/",
 			ResponseTemplate: "${hitokoto}",
 		}
@@ -15,9 +15,17 @@ func GetAPI(ID string) *entity.API {
 	if ID == ".fart" {
 		return &entity.API{
 			ID:               ".fart",
-			Method:           "get",
+			Method:           entity.HTTPGet,
 			URI:              "https://api.uixsj.cn/fart/get",
 			ResponseTemplate: "ALL",
+		}
+	}
+	if ID == ".weather" {
+		return &entity.API{
+			ID:               ".weather",
+			Method:           entity.HTTPGet,
+			URI:              "https://api.openweathermap.org/data/2.5/weather?units=metric&lang=zh_cn&q=${1}&appid={API key}",
+			ResponseTemplate: "${name}今天${main.temp}摄氏度,风速是${wind.speed}",
 		}
 	}
 	return nil
