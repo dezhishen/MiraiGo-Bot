@@ -5,9 +5,9 @@
 * [ ] 使用`sqlite3`存储数据,使用`migrations`同步数据库
 * [ ] 实现`miraigo-module`
   * [ ] 回复模板和参数组
-    * `$index` 输入参数 如`.command 1 2` `$1`即为`1`
-    * `$nickName` 昵称
-    * `$answer` 回复的值
+    * `${index}` 输入参数 如`.command 1 2` `${1}`即为`1`
+    * `${nickName}` 昵称
+    * `${answer}` 回复的值
   * [ ] 支持多种类的回复类型
 
     是否实现|类型|编码|描述

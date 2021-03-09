@@ -24,5 +24,16 @@ func GetRule(messageType string, id int64, command string) *entity.Rule {
 			RespID:  ".draw",
 		}
 	}
+	if command == ".hitokoto" {
+		return &entity.Rule{
+			Command: ".hitokoto",
+			ID:      ".hitokoto",
+			Max:     100,
+			Min:     0,
+			Type:    "api",
+			RespID:  ".hitokoto",
+			APIID:   ".hitokoto",
+		}
+	}
 	return nil
 }

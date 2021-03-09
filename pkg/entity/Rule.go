@@ -9,4 +9,5 @@ type Rule struct {
 	Command string
 	Min     int
 	Max     int
+	APIID   string
 }
