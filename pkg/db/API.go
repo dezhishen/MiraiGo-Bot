@@ -24,7 +24,7 @@ func GetAPI(ID string) *entity.API {
 		return &entity.API{
 			ID:               ".weather",
 			Method:           entity.HTTPGet,
-			URI:              "https://api.openweathermap.org/data/2.5/weather?units=metric&lang=zh_cn&q=${1}&appid={API key}",
+			URI:              "https://api.openweathermap.org/data/2.5/weather?units=metric&lang=zh_cn&q=${1},chn&appid={API key}",
 			ResponseTemplate: "${name}今天${main.temp}摄氏度,风速是${wind.speed}",
 		}
 	}

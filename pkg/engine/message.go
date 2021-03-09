@@ -14,6 +14,9 @@ import (
 func ReplyToGroupMessage(msg *message.GroupMessage) string {
 	//获取回复内容
 	messageText := msg.ToString()
+	if messageText == "小心人工智能" {
+		return "没事,我不会打你的"
+	}
 	//判断是否为命令
 	if strings.HasPrefix(messageText, ".") {
 		//切割内容
