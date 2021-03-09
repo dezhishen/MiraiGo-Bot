@@ -85,7 +85,11 @@ func foreachObj(pre string, v reflect.Value, res map[string]interface{}) {
 	case reflect.Interface:
 		foreachObj(combinePath(pre, ""), v.Elem(), res)
 	default: // float, complex, bool, chan, string,int,func, interface
-		res[pre] = fmt.Sprintf("%v", v.Interface())
+		if v.Type() == nil {
+			res[pre] = ""
+		} else {
+			res[pre] = fmt.Sprintf("%v", v.Interface())
+		}
 	}
 }
 
@@ -113,9 +117,12 @@ func ParseTpl(tpl string, data map[string]interface{}) string {
 	expressions := getTplExpressions(tpl)
 	data = FlatMap("", data)
 	for _, exp := range expressions {
-		//fmt.Println("exp",exp)
 		exp = strings.TrimSpace(exp)
-		tpl = strings.Replace(tpl, "${"+exp+"}", ToString(data[exp]), -1)
+		v, ok := data[exp]
+		if !ok {
+			v = ""
+		}
+		tpl = strings.Replace(tpl, "${"+exp+"}", ToString(v), -1)
 	}
 	return tpl
 }
