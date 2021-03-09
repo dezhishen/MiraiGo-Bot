@@ -11,7 +11,7 @@ import (
 
 // CallAPI api访问
 func CallAPI(api *entity.API, context map[string]interface{}) (string, error) {
-	if api.Method == "get" {
+	if api.Method == entity.HTTPGet {
 		res, err := http.Get(tools.ParseTpl(api.URI, context))
 		if err != nil {
 			return "", err
