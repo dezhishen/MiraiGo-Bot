@@ -2,7 +2,6 @@ package engine
 
 import (
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/Mrs4s/MiraiGo/message"
@@ -30,7 +29,6 @@ func ReplyToGroupMessage(msg *message.GroupMessage) string {
 			return err.Error()
 		}
 		msgContext["$answer"] = answer
-		log.Printf("%v,%v", msgContext, rule)
 		resp := db.GetResp(rule.RespID)
 		out := replaceTemplate(resp, msgContext)
 		return out
