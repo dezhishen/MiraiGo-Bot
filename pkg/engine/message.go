@@ -21,6 +21,9 @@ func ReplyToGroupMessage(msg *message.GroupMessage) string {
 		command := messageArray[0]
 		msgContext := GetGroupMessageContext(msg)
 		rule := db.GetRule("group", msg.GroupCode, command)
+		if rule == nil {
+			return ""
+		}
 		answer, err := RunRule(rule, msgContext)
 		if err != nil {
 			return err.Error()
