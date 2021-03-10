@@ -14,7 +14,7 @@ import (
 type Hitokoto struct {
 }
 
-// HitokotoPlugin 天气插件
+// HitokotoPlugin 一言插件
 type HitokotoPlugin struct {
 	plugins.NoInitPlugin
 	plugins.AlwaysNotFireNextEventPlugin
