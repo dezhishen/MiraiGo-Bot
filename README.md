@@ -8,6 +8,7 @@ release页面直接下载对应的程序,运行
 * `docker run -it -v ${数据目录}:/data xxx:xxx`
 * 根据完成账号密码填写和设备验证,停止容器
 * `docker run -d --restart=always -v ${数据目录}:/data xxxx`
+
 ## 功能
 * [ ] 使用`sqlite3`存储数据,使用`migrations`同步数据库
 * [ ] 实现`miraigo-module`
