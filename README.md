@@ -39,11 +39,16 @@ release页面直接下载对应的程序,运行
     ```
     package main
 
-    import "github.com/dezhiShen/MiraiGo-Bot/pkg/server"
+    import (
+      // 引入插件
+      _ "github.com/dezhiShen/MiraiGo-Bot/pkg/customplugins"
+      "github.com/dezhiShen/MiraiGo-Bot/pkg/server"
+    )
 
     func main() {
       server.Start()
     }
+
 
     ```
 4. 对插件和命令进行配置,绑定`命令`=>`插件`
