@@ -1,6 +1,9 @@
 package main
 
-import "github.com/dezhiShen/MiraiGo-Bot/pkg/server"
+import (
+	_ "github.com/dezhiShen/MiraiGo-Bot/pkg/customplugins"
+	"github.com/dezhiShen/MiraiGo-Bot/pkg/server"
+)
 
 func main() {
 	server.Start()

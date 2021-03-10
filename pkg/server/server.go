@@ -8,6 +8,9 @@ import (
 	"github.com/Logiase/MiraiGo-Template/bot"
 	"github.com/Logiase/MiraiGo-Template/config"
 	"github.com/Logiase/MiraiGo-Template/utils"
+
+	// 引入modules
+	_ "github.com/dezhiShen/MiraiGo-Bot/pkg/modules"
 )
 
 func init() {
