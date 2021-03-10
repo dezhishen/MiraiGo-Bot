@@ -11,22 +11,23 @@ release页面直接下载对应的程序,运行
 
 ## 功能
 
-* [ ] 实现[MiraiGo-Template](https://github.com/Logiase/MiraiGo-Template)
-* [ ] 提供`plugins`,统一消息输入输出
-  * [ ] `plugins`接口设计
-    * [ ] 触发的顺序
-    * [ ] 是否触发
-    * [ ] `OnMessage`方法
-    * [ ] 是否继续触发后续的`插件`
-  * [ ] `plugins`注册功能
+* [x] 实现[MiraiGo-Template](https://github.com/Logiase/MiraiGo-Template)
+* [x] 提供`plugins`,统一消息输入输出
+  * [x] `plugins`接口设计
+    * [x] 触发的顺序
+    * [x] 是否触发
+    * [x] `OnMessageEvent`方法
+    * [x] 是否继续触发后续的`插件`
+  * [x] `plugins`注册功能
 * [ ] 提供工具类,如`缓存`等,方便自定义插件编写
-* [ ] 在`MiraiGo-Template`插入中间层,监听消息,封装`struct`后,调用实现的插件
-  * [ ] 中间层将按照插件的顺序,依次触发插件的`OnMessage`方法
+* [x] 在`MiraiGo-Template`插入中间层,监听消息,封装`struct`后,调用实现的插件
+  * [x] 中间层将按照插件的顺序,依次触发插件的`OnMessage`方法
+  * [ ] 中间层的可配置
 * [ ] 提供默认插件
   * [ ] 配置插件(包含权限要求)
-  * [ ] 天气插件
-  * [ ] 一言插件
-  * [ ] 骰子插件
+  * [x] 天气插件
+  * [x] 一言插件
+  * [x] 骰子插件
 * [ ] ~~提供配置界面~~
 
 ## 二次开发
