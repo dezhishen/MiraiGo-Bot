@@ -7,7 +7,9 @@ import (
 
 // PluginInfo 插件的信息
 type PluginInfo struct {
+	ID          string
 	Name        string
+	SortName    int8
 	Description string
 }
 
@@ -44,6 +46,10 @@ type Plugin interface {
 	PluginInfo() *PluginInfo
 	//PluginInit 插件初始化
 	PluginInit()
+	//IsFireEvent 是否触发事件
+	IsFireEvent(msg *MessageRequest) bool
 	//OnMessage 监听消息
-	OnMessage(msg *MessageRequest) *MessageResponse
+	OnMessageEvent(msg *MessageRequest) (*MessageResponse, error)
+	//IsFireNextEvent 是否触发后续事件
+	IsFireNextEvent(msg *MessageRequest) bool
 }
