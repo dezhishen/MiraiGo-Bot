@@ -10,38 +10,33 @@ release页面直接下载对应的程序,运行
 * `docker run -d --restart=always -v ${数据目录}:/data xxxx`
 
 ## 功能
-* [ ] 使用`sqlite3`存储数据,使用`migrations`同步数据库
-* [ ] 实现`miraigo-module`
-  * [ ] 回复模板和参数组
-    * `${index}` 输入参数 如`.command 1 2` `${1}`即为`1`
-    * `${nickName}` 昵称
-    * `${answer}` 回复的值
-  * [ ] 支持多种类的回复类型
 
-    是否实现|类型|编码|描述
-    -|-|-|-
-    N|文本|text|返回固定文本
-    N|随机数|randomMath|返回`[min,max]`中的整数值
-    N|固定随机数|fixedRandomMath|返回`[min,max]`中的整数值,按自然天固定
-    N|随机项|randomItem|返回`[a,b,c,d,e]`中任意个数
-    ...|
+* [ ] 实现[MiraiGo-Template](https://github.com/Logiase/MiraiGo-Template)
+* [ ] 提供`plugins`,统一消息输入输出
+  * [ ] `plugins`接口设计
+  * [ ] `plugins`注册功能
+* [ ] 在`MiraiGo-Template`插入中间层,监听消息,封装`struct`后,调用实现的插件
+  * [ ] 中间层将实现`命令`=>`自定义插件`的配置
+* [ ] 提供默认插件
+  * [ ] 配置插件
+  * [ ] 天气插件
+  * [ ] 一言插件
+  * [ ] 骰子插件
+* [ ] 提供配置命令
+  * [ ] 当前插件列表
+  * [ ] 配置插件命令
+* [ ] ~~提供配置界面~~
+## 二次开发
 
+1. 引入本项目,实现[`Plugin接口`](./pkg/plugins/entity.go)
+2. 调用注册方法,将当前插件注册到接口中心
+3. 仿照[`cmd/main.go`](./cmd/main.go)编写项目启动类
+4. 对插件和命令进行配置,绑定`命令`=>`插件`
 
-
-  * [ ] 支持定向回复
-* [ ] 支持web端对回复进行配置
-* [ ] 支持通过回复进行配置?
-* [ ] 缓存支持
-
-## 流程
-### 运行流程
-![](./assets/images/运行流程.jpg)
-### 配置流程
-![](./assets/images/配置流程.jpg)
 
 ## 依赖项目
 * https://github.com/Mrs4s/MiraiGo
 * https://github.com/Logiase/MiraiGo-Template
 * https://github.com/golang-migrate/migrate/v4
 * https://github.com/mattn/go-sqlite3
-...更多见[`go.mod`](go.mod)
+* ... 更多见[`go.mod`](go.mod)
