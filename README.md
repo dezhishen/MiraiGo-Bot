@@ -33,7 +33,18 @@ release页面直接下载对应的程序,运行
 
 1. 引入本项目,实现[`Plugin接口`](./pkg/plugins/entity.go)
 2. 调用注册方法,将当前插件注册到接口中心
-3. 仿照[`cmd/main.go`](./cmd/main.go)编写项目启动类
+3. 启动
+
+    ```
+    package main
+
+    import "github.com/dezhiShen/MiraiGo-Bot/pkg/server"
+
+    func main() {
+      server.Start()
+    }
+
+    ```
 4. 对插件和命令进行配置,绑定`命令`=>`插件`
 
 
