@@ -1,4 +1,4 @@
-FROM golang:latest AS builder
+FROM golang:1.16.0-alpine3.13 AS builder
 LABEL MAINTAINER=github.com/dezhiShen
 RUN go env -w GO111MODULE=auto \
   && go env -w GOPROXY=https://goproxy.cn,direct 
