@@ -6,7 +6,7 @@ release页面直接下载对应的程序,运行
 ### docker
 * 自行构建docker镜像 | 或者使用镜像`1179551960sdniu/miraigo:0.02`
 * `docker run -it -v ${数据目录}:/data 1179551960sdniu/miraigo:0.02`
-* 根据完成账号密码填写和设备验证,停止容器
+* 根据提示完成账号密码填写和设备验证,停止容器
 * `docker run -d --restart=always -v ${数据目录}:/data 1179551960sdniu/miraigo:0.02`
 
 ## 功能
