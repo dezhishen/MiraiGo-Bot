@@ -33,7 +33,7 @@ release页面直接下载对应的程序,运行
 ## 二次开发
 
 1. 引入本项目,实现[`Plugin接口`](./pkg/plugins/plugin.go)
-2. 调用注册方法,将当前插件注册到接口中心
+2. 在`init()`方法中调用注册方法`plugins.Register(YourPlugin{})`,将当前插件注册到系统中
 3. 启动
 
     ```
