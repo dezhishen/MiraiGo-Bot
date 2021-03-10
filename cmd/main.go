@@ -9,6 +9,7 @@ import (
 	"github.com/Logiase/MiraiGo-Template/config"
 	"github.com/Logiase/MiraiGo-Template/utils"
 
+	_ "github.com/dezhiShen/MiraiGo-Bot/pkg/customplugins"
 	_ "github.com/dezhiShen/MiraiGo-Bot/pkg/modules"
 )
 
