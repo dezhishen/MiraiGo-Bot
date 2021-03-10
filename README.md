@@ -14,18 +14,19 @@ release页面直接下载对应的程序,运行
 * [ ] 实现[MiraiGo-Template](https://github.com/Logiase/MiraiGo-Template)
 * [ ] 提供`plugins`,统一消息输入输出
   * [ ] `plugins`接口设计
+    * [ ] 顺序
+    * [ ] 是否触发
+    * [ ] `OnMessage`方法
   * [ ] `plugins`注册功能
 * [ ] 在`MiraiGo-Template`插入中间层,监听消息,封装`struct`后,调用实现的插件
-  * [ ] 中间层将实现`命令`=>`自定义插件`的配置
+  * [ ] 中间层将按照插件的顺序,依次触发插件的`OnMessage`方法
 * [ ] 提供默认插件
-  * [ ] 配置插件
+  * [ ] 配置插件(权限认证)
   * [ ] 天气插件
   * [ ] 一言插件
   * [ ] 骰子插件
-* [ ] 提供配置命令
-  * [ ] 当前插件列表
-  * [ ] 配置插件命令
 * [ ] ~~提供配置界面~~
+
 ## 二次开发
 
 1. 引入本项目,实现[`Plugin接口`](./pkg/plugins/entity.go)
