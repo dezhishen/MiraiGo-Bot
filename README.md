@@ -23,7 +23,7 @@ release页面直接下载对应的程序,运行
       * [x] `OnMessageEvent(msg *MessageRequest) (*MessageResponse, error)`方法
       * [x] `IsFireNextEvent(msg *MessageRequest) bool`是否继续触发后续的插件
     * [x] 注册功能
-  * [ ] `SchedulerPlugins`定时器插件
+  * [x] `SchedulerPlugins`定时器插件
     * [x] 接口设计
       * [x] `Cron()` 返回cron表达式
       * [x] `Run(bot *bot.Bot) error` 执行回调
