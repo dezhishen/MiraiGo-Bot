@@ -8,7 +8,7 @@ import (
 )
 
 // GlobalPlugins 全局插件 {'name','plugin'}
-var GlobalPlugins = make(map[string]Plugin)
+var GlobalPlugins = make(map[string]OnMessagePlugin)
 
 // GlobalPluginIDs 排序后的全局插件ID
 var GlobalPluginIDs []string
@@ -16,7 +16,7 @@ var GlobalPluginIDs []string
 var logger = logrus.WithField("bot", "register")
 
 //Register 注册插件
-func Register(plugin Plugin) {
+func Register(plugin OnMessagePlugin) {
 	info := plugin.PluginInfo()
 	if info == nil {
 		panic(errors.New("not found plugin infomation"))
