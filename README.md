@@ -1,5 +1,5 @@
 # MiraiGo-Bot
-增强MiraiGo-Bot,开箱可用,降低使用成本,降低开发成本
+增强MiraiGo-Template,开箱可用,降低使用成本,降低开发成本
 ## 运行
 ### 宿主机
 release页面直接下载对应的程序,运行
