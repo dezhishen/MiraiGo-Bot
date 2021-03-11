@@ -53,7 +53,7 @@ func RegisterSchedulerPlugin(plugin SchedulerPlugin) {
 	}
 	logger.Infof("The plugin [%s] start init...", info.Name)
 	plugin.PluginInit()
-	err := crons.AddFunc(cron, func() {
+	err := Crons.AddFunc(cron, func() {
 		plugin.Run(bot.Instance)
 	})
 	if err != nil {
