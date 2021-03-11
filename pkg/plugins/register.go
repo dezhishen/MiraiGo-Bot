@@ -29,7 +29,7 @@ func RegisterOnMessagePlugin(plugin OnMessagePlugin) {
 	logger.Infof("The plugin [%s] has been registed", info.Name)
 	GlobalOnMessagePluginIDs = append(GlobalOnMessagePluginIDs, info.ID)
 	sort.Slice(GlobalOnMessagePluginIDs, func(i, j int) bool {
-		return GlobalOnMessagePlugins[GlobalOnMessagePluginIDs[i]].PluginInfo().SortNum < GlobalOnMessagePlugins[GlobalOnMessagePluginIDs[j]].PluginInfo().SortNum
+		return GlobalOnMessagePlugins[GlobalOnMessagePluginIDs[i]].SortNum() < GlobalOnMessagePlugins[GlobalOnMessagePluginIDs[j]].SortNum()
 	})
 }
 
@@ -54,8 +54,7 @@ func RegisterSchedulerPlugin(plugin SchedulerPlugin) {
 	logger.Infof("The plugin [%s] start init...", info.Name)
 	plugin.PluginInit()
 	err := crons.AddFunc(cron, func() {
-		c := bot.Instance.QQClient
-		plugin.Run(c)
+		plugin.Run(bot.Instance)
 	})
 	if err != nil {
 		panic(err)

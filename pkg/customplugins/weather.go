@@ -15,6 +15,7 @@ import (
 
 // WeatherPlugin 天气插件
 type WeatherPlugin struct {
+	plugins.NoSortPlugin
 	plugins.NoInitPlugin
 	plugins.AlwaysNotFireNextEventPlugin
 }

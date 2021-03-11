@@ -9,7 +9,6 @@ import (
 type PluginInfo struct {
 	ID          string
 	Name        string
-	SortNum     int8
 	Description string
 }
 

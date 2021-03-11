@@ -15,6 +15,15 @@ func (p NoInitPlugin) PluginInit() {
 
 }
 
+// NoSortPlugin 无需排序
+type NoSortPlugin struct {
+}
+
+// SortNum 排序
+func (p NoSortPlugin) SortNum() int8 {
+	return 100
+}
+
 // AlwaysFireEventPlugin 总是触发的插件
 type AlwaysFireEventPlugin struct {
 }

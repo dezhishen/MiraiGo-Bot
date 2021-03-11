@@ -16,6 +16,7 @@ type Hitokoto struct {
 
 // HitokotoPlugin 一言插件
 type HitokotoPlugin struct {
+	plugins.NoSortPlugin
 	plugins.NoInitPlugin
 	plugins.AlwaysNotFireNextEventPlugin
 }

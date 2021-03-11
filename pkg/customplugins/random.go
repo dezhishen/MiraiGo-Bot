@@ -15,6 +15,7 @@ type Random struct {
 
 // RandomPlugin Random插件
 type RandomPlugin struct {
+	plugins.NoSortPlugin
 	plugins.NoInitPlugin
 	plugins.AlwaysNotFireNextEventPlugin
 }
