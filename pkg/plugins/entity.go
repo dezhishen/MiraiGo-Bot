@@ -34,6 +34,20 @@ type MessageRequest struct {
 	OriginalObject *msg.Message
 }
 
+// GetNickName 获取称呼
+func (m *MessageRequest) GetNickName() string {
+	if PrivateMessage == m.MessageType {
+		return m.Sender.Nickname
+	}
+	if GroupMessage == m.MessageType {
+		if m.Sender.CardName != "" {
+			return m.Sender.CardName
+		}
+		return m.Sender.Nickname
+	}
+	return ""
+}
+
 // MessageResponse 消息事件返回对象
 type MessageResponse struct {
 	Elements []message.IMessageElement
