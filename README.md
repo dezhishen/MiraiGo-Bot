@@ -53,8 +53,10 @@ release页面直接下载对应的程序,运行
     package main
 
     import (
-      // 引入插件
-      _ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins"
+      _ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/hitokoto"
+      _ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/random"
+      _ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/tips"
+      _ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/weather"
       "github.com/dezhiShen/MiraiGo-Bot/pkg/server"
     )
 
