@@ -60,13 +60,19 @@ func Start() {
 	bot.UseProtocol(bot.AndroidPhone)
 	// 登录
 	bot.Login()
+	// 启动定时任务
+	go startScheduler()
 	// 刷新好友列表，群列表
 	bot.RefreshList()
-	go plugins.Crons.Start()
 	ch := make(chan os.Signal, 1)
 	signal.Notify(ch, os.Interrupt, os.Kill)
 	<-ch
 	bot.Stop()
+}
+
+func startScheduler() {
+	plugins.Crons.Start()
+	select {}
 }
 
 func pathExists(path string) (bool, error) {
