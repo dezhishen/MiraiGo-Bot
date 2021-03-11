@@ -6,7 +6,8 @@ WORKDIR /build
 COPY ./ .
 RUN cd /build && go build -tags netgo -o miraigo cmd/main.go
 
-FROM alpine:latest
+FROM alpine:3.13
+RUN apk add -U  --repository http://mirrors.ustc.edu.cn/alpine/v3.13/main/  tzdata
 COPY --from=builder /build/miraigo /usr/bin/miraigo
 RUN chmod +x /usr/bin/miraigo
 WORKDIR /data
