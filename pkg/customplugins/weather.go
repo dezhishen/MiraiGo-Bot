@@ -85,5 +85,5 @@ func (w WeatherPlugin) OnMessageEvent(request *plugins.MessageRequest) (*plugins
 }
 
 func init() {
-	plugins.Register(WeatherPlugin{})
+	plugins.RegisterOnMessagePlugin(WeatherPlugin{})
 }

@@ -53,5 +53,5 @@ func (w RandomPlugin) OnMessageEvent(request *plugins.MessageRequest) (*plugins.
 }
 
 func init() {
-	plugins.Register(RandomPlugin{})
+	plugins.RegisterOnMessagePlugin(RandomPlugin{})
 }

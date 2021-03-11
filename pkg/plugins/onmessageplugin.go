@@ -1,5 +1,11 @@
 package plugins
 
+// GlobalOnMessagePlugins 全局插件 {'name','plugin'}
+var GlobalOnMessagePlugins = make(map[string]OnMessagePlugin)
+
+// GlobalOnMessagePluginIDs 排序后的全局插件ID
+var GlobalOnMessagePluginIDs []string
+
 // NoInitPlugin 无需初始化
 type NoInitPlugin struct {
 }

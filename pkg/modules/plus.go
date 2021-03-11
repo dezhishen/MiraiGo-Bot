@@ -68,8 +68,8 @@ func (a *ar) Stop(bot *bot.Bot, wg *sync.WaitGroup) {
 
 func onMessage(requset *plugins.MessageRequest) (*message.SendingMessage, error) {
 	m := message.NewSendingMessage()
-	for _, pluginID := range plugins.GlobalPluginIDs {
-		plugin := plugins.GlobalPlugins[pluginID]
+	for _, pluginID := range plugins.GlobalOnMessagePluginIDs {
+		plugin := plugins.GlobalOnMessagePlugins[pluginID]
 		if plugin.IsFireEvent(requset) {
 			resp, err := plugin.OnMessageEvent(requset)
 			if err != nil {

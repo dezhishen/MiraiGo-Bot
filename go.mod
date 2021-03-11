@@ -9,6 +9,7 @@ require (
 	github.com/golang-migrate/migrate/v4 v4.14.1
 	github.com/mattn/go-sqlite3 v1.14.6
 	github.com/prometheus/common v0.4.0
+	github.com/robfig/cron v1.2.0
 	github.com/sirupsen/logrus v1.8.0
 	golang.org/x/sys v0.0.0-20210305230114-8fe3ee5dd75b // indirect
 	gopkg.in/fatih/set.v0 v0.2.1

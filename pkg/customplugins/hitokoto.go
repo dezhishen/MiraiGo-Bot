@@ -75,5 +75,5 @@ func (w HitokotoPlugin) OnMessageEvent(request *plugins.MessageRequest) (*plugin
 }
 
 func init() {
-	plugins.Register(HitokotoPlugin{})
+	plugins.RegisterOnMessagePlugin(HitokotoPlugin{})
 }
