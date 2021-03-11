@@ -17,3 +17,5 @@ vendor/
 device.json
 application.yaml
 cmd/__debug_bin
+plugin-storage.db
+plugin-storage.db.lock
