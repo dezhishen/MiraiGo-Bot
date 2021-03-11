@@ -16,8 +16,9 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/Logiase/MiraiGo-Template v0.0.0-20210228150851-29092d4d5486 h1:MnQD9AWMh18anpIB4Evg65sfn5PIEMplDAUzQayvOUs=
 github.com/Logiase/MiraiGo-Template v0.0.0-20210228150851-29092d4d5486/go.mod h1:wVzx5dZ01len5WBIXX4Q7u11XP3Sce398ChBu1xiMjM=
 github.com/Mrs4s/MiraiGo v0.0.0-20210217093128-52b80fdf142a/go.mod h1:yhqA0NyKxUf7I/0HR/1OMchveFggX8wde04gqdGrNfU=
-github.com/Mrs4s/MiraiGo v0.0.0-20210308011115-8c89d62657af h1:PPjWwM/KwbHzOyaEwKm3W5JrK6TTxpOSf+Sd4JXxF9s=
 github.com/Mrs4s/MiraiGo v0.0.0-20210308011115-8c89d62657af/go.mod h1:yhqA0NyKxUf7I/0HR/1OMchveFggX8wde04gqdGrNfU=
+github.com/Mrs4s/MiraiGo v0.0.0-20210310092204-857e891976fe h1:dXgZPuoIJm3XMIHhvZov35vw3U2NRnEt39eMBaXJ0wQ=
+github.com/Mrs4s/MiraiGo v0.0.0-20210310092204-857e891976fe/go.mod h1:yhqA0NyKxUf7I/0HR/1OMchveFggX8wde04gqdGrNfU=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
@@ -39,6 +40,9 @@ github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f/go.mod h1:E3G3o1h8I7cfc
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/dezhiShen/MiraiGo-Bot v0.0.0-20210311014619-18bf4e556588/go.mod h1:2JS2ngpN/JO9lgVHRXCBDVnMdEFbopQ/WJSoX4jas6g=
+github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210311015410-6d7422f054ff h1:qN9NIHwshVSsxhdMOs5hKMGIizAyqSFMkvJnHx48oLQ=
+github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210311015410-6d7422f054ff/go.mod h1:uJS793QIkTIwRGAj0/MjBvobQOgQTwh1x+IGa1voNdg=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=

@@ -50,7 +50,7 @@ release页面直接下载对应的程序,运行
 
     import (
       // 引入插件
-      _ "github.com/dezhiShen/MiraiGo-Bot/pkg/customplugins"
+      _ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins"
       "github.com/dezhiShen/MiraiGo-Bot/pkg/server"
     )
 
@@ -61,6 +61,8 @@ release页面直接下载对应的程序,运行
 
     ```
 
+## 插件仓库
+* https://github.com/dezhiShen/MiraiGo-Bot-Plugins
 
 ## 依赖项目
 * https://github.com/Mrs4s/MiraiGo
