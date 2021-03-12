@@ -2,6 +2,7 @@ package storage
 
 import (
 	"bytes"
+	"encoding/binary"
 
 	"github.com/boltdb/bolt"
 )
@@ -73,4 +74,37 @@ func HasByPrefix(bucket, prefix string) (bool, error) {
 		return nil
 	})
 	return r, err
+}
+
+// Incr
+func Incr(bucket, key string, incr int) (int, error) {
+	db.Update(func(tx *bolt.Tx) error {
+		tx.CreateBucketIfNotExists([]byte(bucket))
+		b := tx.Bucket([]byte(bucket))
+		v := b.Get([]byte(key))
+		if v == nil {
+			v = IntToBytes(incr)
+		}
+		v = IntToBytes(BytesToInt(v) + incr)
+		err := b.Put([]byte(key), v)
+		return err
+	})
+}
+
+//整形转换成字节
+func IntToBytes(n int) []byte {
+	x := int32(n)
+	bytesBuffer := bytes.NewBuffer([]byte{})
+	binary.Write(bytesBuffer, binary.BigEndian, x)
+	return bytesBuffer.Bytes()
+}
+
+//字节转换成整形
+func BytesToInt(b []byte) int {
+	bytesBuffer := bytes.NewBuffer(b)
+
+	var x int32
+	binary.Read(bytesBuffer, binary.BigEndian, &x)
+
+	return int(x)
 }
