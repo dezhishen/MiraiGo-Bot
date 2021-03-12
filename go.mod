@@ -6,7 +6,7 @@ require (
 	github.com/Logiase/MiraiGo-Template v0.0.0-20210309153626-69cfb14d2cd1
 	github.com/Mrs4s/MiraiGo v0.0.0-20210311023430-50af23569ce3
 	github.com/boltdb/bolt v1.3.1
-	github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210311124744-22b4a1b684bb
+	github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210312030320-35dbe4c7773b
 	github.com/robfig/cron v1.2.0
 	github.com/sirupsen/logrus v1.8.1
 )

@@ -20,8 +20,10 @@ func init() {
 // Get 获取
 func Get(bucket, key string, decoder func(string) error) error {
 	return db.View(func(tx *bolt.Tx) error {
-		tx.CreateBucketIfNotExists([]byte(bucket))
 		b := tx.Bucket([]byte(bucket))
+		if b == nil {
+			return decoder("")
+		}
 		v := b.Get([]byte(key))
 		return decoder(string(v))
 	})
@@ -50,8 +52,12 @@ func Delete(bucket, key string) error {
 // GetByPrefix 根据前缀获取
 func GetByPrefix(bucket, prefix string, decoder func(string, string) error) error {
 	return db.Update(func(tx *bolt.Tx) error {
-		tx.CreateBucketIfNotExists([]byte(bucket))
-		c := tx.Bucket([]byte(bucket)).Cursor()
+		// tx.CreateBucketIfNotExists([]byte(bucket))
+		b := tx.Bucket([]byte(bucket))
+		if b == nil {
+			return nil
+		}
+		c := b.Cursor()
 		for k, v := c.Seek([]byte(prefix)); k != nil && bytes.HasPrefix(k, []byte(prefix)); k, v = c.Next() {
 			err := decoder(string(k), string(v))
 			if err != nil {
