@@ -78,17 +78,21 @@ func HasByPrefix(bucket, prefix string) (bool, error) {
 
 // Incr
 func Incr(bucket, key string, incr int) (int, error) {
-	db.Update(func(tx *bolt.Tx) error {
+	var r int
+	err := db.Update(func(tx *bolt.Tx) error {
 		tx.CreateBucketIfNotExists([]byte(bucket))
 		b := tx.Bucket([]byte(bucket))
 		v := b.Get([]byte(key))
 		if v == nil {
-			v = IntToBytes(incr)
+			r = incr
+			// v = IntToBytes(incr)
+		} else {
+			r = BytesToInt(v) + incr
 		}
-		v = IntToBytes(BytesToInt(v) + incr)
-		err := b.Put([]byte(key), v)
+		err := b.Put([]byte(key), IntToBytes(r))
 		return err
 	})
+	return r, err
 }
 
 //整形转换成字节
