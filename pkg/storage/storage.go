@@ -60,3 +60,17 @@ func GetByPrefix(bucket, prefix string, decoder func(string, string) error) erro
 		return nil
 	})
 }
+
+// HasByPrefix 根据前缀判断是否存在
+func HasByPrefix(bucket, prefix string) (bool, error) {
+	var r bool
+	err := db.Update(func(tx *bolt.Tx) error {
+		tx.CreateBucketIfNotExists([]byte(bucket))
+		c := tx.Bucket([]byte(bucket)).Cursor()
+		for k, _ := c.Seek([]byte(prefix)); k != nil && bytes.HasPrefix(k, []byte(prefix)); k, _ = c.Next() {
+			r = true
+		}
+		return nil
+	})
+	return r, err
+}
