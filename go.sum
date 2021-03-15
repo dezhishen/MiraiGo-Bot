@@ -56,6 +56,8 @@ github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210315100240-86079a9339c1 h1:O
 github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210315100240-86079a9339c1/go.mod h1:SXfq+ckWR0F1Ov3ctPHMUgGVpCH9MBmU/4CZQvBzADE=
 github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210315100915-927641eda786 h1:XcAhL+U3u6ajBexLOJKAoE+5n/lbathGWdXu32Zyb44=
 github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210315100915-927641eda786/go.mod h1:SXfq+ckWR0F1Ov3ctPHMUgGVpCH9MBmU/4CZQvBzADE=
+github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210315102752-8da0cde19a02 h1:TrBMSdKIQ4rMOa9wkzqZXc2pphxz/h5UOdwwvZl6unk=
+github.com/dezhiShen/MiraiGo-Bot-Plugins v0.0.0-20210315102752-8da0cde19a02/go.mod h1:SXfq+ckWR0F1Ov3ctPHMUgGVpCH9MBmU/4CZQvBzADE=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
