@@ -1,6 +1,7 @@
 package plugins
 
 import (
+	"github.com/Mrs4s/MiraiGo/client"
 	"github.com/Mrs4s/MiraiGo/client/pb/msg"
 	"github.com/Mrs4s/MiraiGo/message"
 )
@@ -32,6 +33,7 @@ type MessageRequest struct {
 	Time           int32
 	Elements       []message.IMessageElement
 	OriginalObject *msg.Message
+	QQClient       *client.QQClient
 }
 
 // GetNickName 获取称呼

@@ -37,6 +37,7 @@ func (a *ar) PostInit() {
 func (a *ar) Serve(b *bot.Bot) {
 	b.OnGroupMessage(func(c *client.QQClient, msg *message.GroupMessage) {
 		requset := plugins.NewMessageRequsetFromGroupMessage(msg)
+		requset.QQClient = c
 		m, err := onMessage(requset)
 		if err != nil {
 			go c.SendGroupMessage(msg.GroupCode, message.NewSendingMessage().Append(message.NewText(err.Error())))
@@ -49,6 +50,7 @@ func (a *ar) Serve(b *bot.Bot) {
 
 	b.OnPrivateMessage(func(c *client.QQClient, msg *message.PrivateMessage) {
 		requset := plugins.NewMessageRequsetFromPrivateMessage(msg)
+		requset.QQClient = c
 		m, err := onMessage(requset)
 		if err != nil {
 			go c.SendGroupMessage(msg.Sender.Uin, message.NewSendingMessage().Append(message.NewText(err.Error())))
