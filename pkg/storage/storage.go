@@ -29,6 +29,20 @@ func Get(bucket, key []byte, decoder func([]byte) error) error {
 	})
 }
 
+// GetValue 获取值
+func GetValue(bucket, key []byte) ([]byte, error) {
+	var result []byte
+	err := db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket(bucket)
+		if b == nil {
+			return nil
+		}
+		result = b.Get(key)
+		return nil
+	})
+	return result, err
+}
+
 // Put 放入
 func Put(bucket, key, value []byte) error {
 	return db.Update(func(tx *bolt.Tx) error {
