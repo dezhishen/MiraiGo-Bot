@@ -2,9 +2,9 @@ package server
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/signal"
+	"time"
 
 	"github.com/Logiase/MiraiGo-Template/bot"
 	"github.com/Logiase/MiraiGo-Template/config"
@@ -74,14 +74,23 @@ func Start() {
 }
 
 func healthCheck(bot *bot.Bot) {
-	content := "0"
-	if bot.Online {
-		content = "1"
+	filename := "./health"
+	for {
+		if bot.Online {
+			flag, _ := pathExists(filename)
+			if !flag {
+				os.Create(filename)
+			}
+		} else {
+			os.Remove(filename)
+		}
+		time.Sleep(time.Second * 5)
 	}
-	_ = ioutil.WriteFile("./online.status", []byte(content), 0777)
-	select {}
 }
-
+func exists(filename string) bool {
+	_, err := os.Stat(filename)
+	return err == nil || os.IsExist(err)
+}
 func startScheduler() {
 	plugins.Crons.Start()
 	select {}
