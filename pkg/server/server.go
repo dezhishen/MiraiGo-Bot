@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/signal"
 
@@ -60,6 +61,8 @@ func Start() {
 	bot.UseProtocol(bot.AndroidPhone)
 	// 登录
 	bot.Login()
+	//健康检查
+	go healthCheck(bot.Instance)
 	// 启动定时任务
 	go startScheduler()
 	// 刷新好友列表，群列表
@@ -68,6 +71,15 @@ func Start() {
 	signal.Notify(ch, os.Interrupt, os.Kill)
 	<-ch
 	bot.Stop()
+}
+
+func healthCheck(bot *bot.Bot) {
+	content := "0"
+	if bot.Online {
+		content = "1"
+	}
+	_ = ioutil.WriteFile("./online.status", []byte(content), 0777)
+	select {}
 }
 
 func startScheduler() {

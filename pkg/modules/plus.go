@@ -4,7 +4,6 @@ import (
 	"sync"
 
 	"github.com/Logiase/MiraiGo-Template/bot"
-	"github.com/Logiase/MiraiGo-Template/utils"
 	"github.com/Mrs4s/MiraiGo/client"
 	"github.com/Mrs4s/MiraiGo/message"
 	"github.com/dezhiShen/MiraiGo-Bot/pkg/plugins"
@@ -15,7 +14,6 @@ func init() {
 }
 
 var instance = &ar{}
-var logger = utils.GetModuleLogger("dezhiShen.reply")
 var tem map[string]string
 
 type ar struct {
