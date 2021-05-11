@@ -1,20 +1,7 @@
 # MiraiGo-Bot
 增强MiraiGo-Template,开箱可用,降低使用成本,降低开发成本
-## 运行
-### 宿主机
-~~release页面直接下载对应的程序,运行~~
-
-前往插件仓库运行
-https://github.com/dezhiShen/MiraiGo-Bot-Plugins
-
-### docker
-* 自行构建docker镜像 | 或者使用镜像`1179551960sdniu/miraigo:0.02`
-* `docker run -it -v ${数据目录}:/data 1179551960sdniu/miraigo:0.02`
-* 根据提示完成账号密码填写和设备验证,停止容器
-* `docker run -d --restart=always -v ${数据目录}:/data 1179551960sdniu/miraigo:0.02`
 
 ## 功能
-
 * [x] 实现[MiraiGo-Template](https://github.com/Logiase/MiraiGo-Template)
 * [x] 提供`plugins`接口
   * [x] `plugin`基类
@@ -44,6 +31,43 @@ https://github.com/dezhiShen/MiraiGo-Bot-Plugins
   * [x] 定时任务插件支持
     * [x] 启动和运行定时任务 
 * [x] 健康检查 运行目录下,文件`/data/health`是否存在
+
+## 运行
+
+编写启动类,引入需要加载的插件,调用启动方法
+
+```
+package main
+
+import (
+// 引入插件
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/calendar"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/haimage"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/hitokoto"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/jrrp"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/lpl"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/mc"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/pixiv"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/random"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/thecat"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/thedog"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/tips"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/caihongpi"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/dujitang"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/weather"
+	_ "github.com/dezhiShen/MiraiGo-Bot-Plugins/pkg/plugins/sovietjokes"
+ //启动入口
+	"github.com/dezhiShen/MiraiGo-Bot/pkg/server"
+)
+
+func main() {
+//启动
+	server.Start()
+}
+```
+## 插件仓库
+https://github.com/dezhiShen/MiraiGo-Bot-Plugins
+
 ## 二次开发
 
 1. 引入本项目,实现[一个或者多个`plugin`](./pkg/plugins/plugin.go)
@@ -67,9 +91,6 @@ https://github.com/dezhiShen/MiraiGo-Bot-Plugins
 
 
     ```
-
-## 插件仓库
-* https://github.com/dezhiShen/MiraiGo-Bot-Plugins
 
 ## 依赖项目
 * https://github.com/Mrs4s/MiraiGo
