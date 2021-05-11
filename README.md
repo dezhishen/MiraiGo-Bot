@@ -43,7 +43,7 @@ https://github.com/dezhiShen/MiraiGo-Bot-Plugins
     * [x] 中间层的可配置
   * [x] 定时任务插件支持
     * [x] 启动和运行定时任务 
-* [x] 健康检查 运行目录下,文件`online.status`内容为1,否则为0
+* [x] 健康检查 运行目录下,文件`/data/health`是否存在
 ## 二次开发
 
 1. 引入本项目,实现[一个或者多个`plugin`](./pkg/plugins/plugin.go)
