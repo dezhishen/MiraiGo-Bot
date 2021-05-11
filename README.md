@@ -2,7 +2,10 @@
 增强MiraiGo-Template,开箱可用,降低使用成本,降低开发成本
 ## 运行
 ### 宿主机
-release页面直接下载对应的程序,运行
+~~release页面直接下载对应的程序,运行~~
+前往插件仓库运行
+https://github.com/dezhiShen/MiraiGo-Bot-Plugins
+
 ### docker
 * 自行构建docker镜像 | 或者使用镜像`1179551960sdniu/miraigo:0.02`
 * `docker run -it -v ${数据目录}:/data 1179551960sdniu/miraigo:0.02`
