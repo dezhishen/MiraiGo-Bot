@@ -3,6 +3,7 @@
 ## 运行
 ### 宿主机
 ~~release页面直接下载对应的程序,运行~~
+
 前往插件仓库运行
 https://github.com/dezhiShen/MiraiGo-Bot-Plugins
 
