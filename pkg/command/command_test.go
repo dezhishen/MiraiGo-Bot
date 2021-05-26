@@ -10,7 +10,7 @@ type opts struct {
 
 func Test_Parse(t *testing.T) {
 	var o = opts{}
-	args, _ := Parse(&o, []string{"doSomething", "-n", "test"})
-	print(len(args))
-	print(o.Name)
+	args, _ := Parse("doTest", &o, []string{"doSomething", "-n", "test"})
+	println(len(args))
+	println(o.Name)
 }
