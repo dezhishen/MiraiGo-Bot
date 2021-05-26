@@ -20,9 +20,10 @@
       * [x] `Run(bot *bot.Bot) error` 执行回调
     * [x] 注册功能
 * [x] 提供工具类
-  * [x] 键值对持久化存储
-  * [ ] 键值对缓存
-  * [x] 数据隔离
+  * [x] 键值对持久化存储 [storage](./pkg/storage)
+    * [x] 数据隔离
+  * [x] 键值对缓存 [cache](./pkg/cache)
+  * [x] 命令行Parse工具 [command](./pkg/command)
   * [ ] 全局键值对
 * [x] 在`MiraiGo-Template`插入中间层,调用实现的插件
   * [x] 消息监听插件支持
@@ -31,6 +32,29 @@
   * [x] 定时任务插件支持
     * [x] 启动和运行定时任务 
 * [x] 健康检查 运行目录下,文件`/data/health`是否存在
+
+### 部分功能使用说明
+#### 命令行解析
+使用[https://github.com/jessevdk/go-flags](https://github.com/jessevdk/go-flags)实现
+
+查看示例:[command_test.go](./pkg/command/command_test.go)
+
+* 首先定义一个`struct`
+* 补充 `short`,`long`,`default`,`description`等关键字信息
+  ```
+  type opts struct {
+    Name string `short:"n" long:"name" description:"姓名"`
+  }
+  ```
+* 调用
+  ```
+  func Test_Parse(t *testing.T) {
+    var o = opts{}
+    args, _ := Parse(&o, []string{"doSomething", "-n", "test"})
+    print(len(args))
+    print(o.Name)
+  }
+  ```
 
 ## 运行
 
