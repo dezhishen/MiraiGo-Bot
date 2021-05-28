@@ -10,7 +10,12 @@ var c = cache.New(5*time.Minute, 10*time.Minute)
 
 // Get 获取
 func Get(key string) (interface{}, bool) {
-	return c.Get(key)
+	v, exists := c.Get(key)
+	if exists {
+		return *v.(*interface{}), true
+	} else {
+		return nil, false
+	}
 }
 
 // Set 设置
