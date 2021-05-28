@@ -17,3 +17,8 @@ func Get(key string) (interface{}, bool) {
 func Set(key string, value interface{}, expiration time.Duration) {
 	c.Set(key, &value, expiration)
 }
+
+// Delete 删除
+func Delete(key string) {
+	c.Delete(key)
+}
