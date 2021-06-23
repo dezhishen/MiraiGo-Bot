@@ -30,17 +30,15 @@ func init() {
 		var password string
 		fmt.Scanln(&password)
 		f, err := os.Create("./application.yaml")
-		defer f.Close()
 		if err != nil {
 			panic(err.Error())
-		} else {
-			_, err = f.WriteString(fmt.Sprintf("bot:\n  account: %v\n  password: %v", account, password))
-			if err != nil {
-				panic(err.Error())
-			}
+		}
+		defer f.Close()
+		_, err = f.WriteString(fmt.Sprintf("bot:\n  account: %v\n  password: %v", account, password))
+		if err != nil {
+			panic(err.Error())
 		}
 		f.Close()
-
 	}
 	config.Init()
 	exists, _ = pathExists("./device.json")
@@ -66,9 +64,12 @@ func Start() {
 	// 启动定时任务
 	go startScheduler()
 	// 刷新好友列表，群列表
+	//协程插件
+	startCoroutinePlugin()
+	go healthCheck(bot.Instance)
 	bot.RefreshList()
 	ch := make(chan os.Signal, 1)
-	signal.Notify(ch, os.Interrupt, os.Kill)
+	signal.Notify(ch, os.Interrupt)
 	<-ch
 	bot.Stop()
 }
@@ -87,10 +88,13 @@ func healthCheck(bot *bot.Bot) {
 		time.Sleep(time.Second * 5)
 	}
 }
-func exists(filename string) bool {
-	_, err := os.Stat(filename)
-	return err == nil || os.IsExist(err)
+
+func startCoroutinePlugin() {
+	for _, p := range plugins.GlobalCoroutinePlugins {
+		go p.Run(bot.Instance)
+	}
 }
+
 func startScheduler() {
 	plugins.Crons.Start()
 	select {}
