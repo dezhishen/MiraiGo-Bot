@@ -19,10 +19,9 @@
       * [x] `Cron()` 返回cron表达式
       * [x] `Run(bot *bot.Bot) error` 执行回调
     * [x] 注册功能
-  * [ ] `GoroutinePlugins`协程插件
-    * [ ] `BeforeLogin()` 登录前置操作
-    * [ ] `Run(bot *bot.Bot)error` 协程启动的回调方法
-    * [ ] 注册功能
+  * [X] `GoroutinePlugins`协程插件
+    * [X] `Run(bot *bot.Bot)error` 协程启动的回调方法
+    * [X] 注册功能
 * [x] 提供工具类
   * [x] 键值对持久化存储 [storage](./pkg/storage)
     * [x] 数据隔离
