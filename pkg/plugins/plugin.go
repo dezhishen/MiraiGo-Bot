@@ -32,3 +32,10 @@ type SchedulerPlugin interface {
 	//Run 要执行的方法
 	Run(c *bot.Bot) error
 }
+
+//CoroutinePlugin 协程插件
+type CoroutinePlugin interface {
+	plugin
+	//Run 要执行的方法
+	Run(c *bot.Bot) error
+}
