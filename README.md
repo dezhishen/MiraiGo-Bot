@@ -1,6 +1,15 @@
 # MiraiGo-Bot
 增强MiraiGo-Template,开箱可用,降低使用成本,降低开发成本
 
+
+## 计划
+### 1.0.完成基础能力
+已完成
+### 2.0.拓展bot平台
+* 剥离bot依赖,将bot内核作为接口注册引入
+  * 制定标准接口
+  * 使用`MiraiGo-Template`作为默认实现
+  * 尝试增加电报
 ## 功能
 * [x] 实现[MiraiGo-Template](https://github.com/Logiase/MiraiGo-Template)
 * [x] 提供`plugins`接口
